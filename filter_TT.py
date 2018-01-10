@@ -1,19 +1,21 @@
 #This code takes in a SAM file and removes any reads that do not have a TT in the expected position for a 13-mer excision product
 #Note, this code is used after the reads are split into plus and minus strands, if the file contains a minus strand, then it will first reverse complement the read.
 
+#REQUIREMENTS -i input -o output
+
 import argparse
 
-def main(infile,output,strand):
+def main(infile,output):
     file1=open(infile)
     outfile=open(output,'w')
-    strand= strand
     for line in file1:
         if '@'in line:
             outfile.write(line)
         else:
             list_line=line.split()
             read=list_line[9]
-            if strand=='m':
+            strand=int(list_line[1])
+            if strand==16:
                 read=reverse_comp(read)
             if read[7:9]=="TT":
                 outfile.write(line)
@@ -33,8 +35,8 @@ if __name__=="__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--infile", help="input file")
     parser.add_argument("-o", "--output", help="Directs the output to a name of your choice")
-    parser.add_argument("-s", "--strand", help="Indicate if reads are on plus (p) or minus (m) strand")
+    #parser.add_argument("-s", "--strand", help="Indicate if reads are on plus (p) or minus (m) strand")
     args = parser.parse_args()
-    main(args.infile,args.output,args.strand)
+    main(args.infile,args.output)
     
 
