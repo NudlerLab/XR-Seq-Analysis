@@ -12,10 +12,10 @@ with gzip.open(args.infile, 'rt') as file1:
         if '@' in line:
             pass
         else:
-            if 'GGCTCAGTTCGTATGAGTGCCG' in line:
+            if 'GGCTCAGTTC' in line:
                 line=line.strip()
-                #print(line)
-                start=line.find('GGCTCAGTTCGTATGAGTGCCG')
+                print(line)
+                start=line.find('GGCTCAGTTC')
                 end=start+len('GGCTCAGTTCGTATGAGTGCCG')
                 iden=line[end:end+8]
                 outfile.write('@'+iden+'\n')

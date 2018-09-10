@@ -36,7 +36,7 @@ def complement(gene):
 
 def plusTTcounts(file1):
     TS_dict={}
-    plus_genome=readgenome("NC_000913_3.fna")
+    plus_genome=readgenome("NC_000913.2.fasta")
     
     minus_genome=complement(plus_genome)
     bedfile=open(file1,"r")
@@ -62,7 +62,7 @@ def plusTTcounts(file1):
 
 def minusTTcounts(file1):
     NTS_dict={}
-    plus_genome=readgenome("NC_000913_3.fna")
+    plus_genome=readgenome("NC_000913.2.fasta")
     
     minus_genome=complement(plus_genome)
     bedfile=open(file1,"r")
@@ -87,12 +87,12 @@ def minusTTcounts(file1):
             
 
 
-TS_TTcount= plusTTcounts("mfd_plus_genes.bed")
+TS_TTcount= plusTTcounts("primary_upstreamsense_TSS_2")
 TS_df=pd.DataFrame.from_dict(TS_TTcount,orient='index')
 
 TS_df.columns=["TS"]
 
-NTS_TTcount=minusTTcounts("mfd_plus_genes.bed")
+NTS_TTcount=minusTTcounts("primary_upstreamsense_TSS_2")
 NTS_df=pd.DataFrame.from_dict(NTS_TTcount,orient='index')
 NTS_df.columns=["NTS"]
 df_lis=[TS_df,NTS_df]
