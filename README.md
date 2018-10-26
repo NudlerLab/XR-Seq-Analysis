@@ -1,7 +1,8 @@
 # XR-Seq-Analysis
-Python codes to analyze XR-seq data
 
-remove_duplicates.py -> removes PCR duplicates from reads after alignment (using sam file)
+Python codes to analyze XR-seq Data
+
+`remove_duplicates.py` -> removes PCR duplicates from reads after alignment (using sam file)
 
 edit_header.py -> Adds the random 8mer barcode to the header of the fastq (not trimmed) file so that it this barcode ends up in the sam file
 
